@@ -11,15 +11,15 @@ require('dotenv').config();
         return -1;
     }
 
-    var topicName = process.argv[2];
-    var subject = process.argv[3];
-    var body = process.argv[4]
+    const topicName = process.argv[2];
+    const subject = process.argv[3];
+    const body = process.argv[4];
 
     const sbClient = new ServiceBusClient(connectionString);
     const sender = sbClient.createSender(topicName);
 
     await sender.sendMessages({
-        body,
+        body: JSON.parse(body),
         contentType: "application/json",
         subject
     });
