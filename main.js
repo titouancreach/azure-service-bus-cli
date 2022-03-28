@@ -19,7 +19,7 @@ require('dotenv').config();
     const sender = sbClient.createSender(topicName);
 
     await sender.sendMessages({
-        body: JSON.parse(body),
+        body,
         contentType: "application/json",
         subject
     });
